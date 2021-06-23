@@ -14,7 +14,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 ynh_clean_setup () {
-	true
+    true
 }
 # Exit if an error occurs during the execution of the script
 ynh_abort_if_errors
@@ -149,7 +149,7 @@ chown -R $app:www-data "$final_path"
 update-alternatives --set php /usr/bin/php$phpversion
 
 pushd "$final_path"
-	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush site:install $install_profil --account-name=$admin --account-pass=$password --account-mail=$admin_mail --db-url=mysql://$db_user:$db_pwd@localhost/$db_name --site-name="$app" --locale=$language --yes
+    ynh_exec_warn_less sudo -u $app env PATH=$PATH drush site:install $install_profil --account-name=$admin --account-pass=$password --account-mail=$admin_mail --db-url=mysql://$db_user:$db_pwd@localhost/$db_name --site-name="$app" --locale=$language --yes
 popd
 
 update-alternatives --set php /usr/bin/php${YNH_DEFAULT_PHP_VERSION}
@@ -164,13 +164,13 @@ ynh_add_config --template="../conf/cron" --destination="/etc/cron.d/$app"
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
 #=================================================
-ynh_script_progression --message="Storing the config file checksum..."
+#ynh_script_progression --message="Storing the config file checksum..."
 
 # Calculate and store the config file checksum into the app settings
-ynh_store_file_checksum --file="$final_path/$app/sites/default/settings.php"
+#ynh_store_file_checksum --file="$final_path/$app/sites/default/settings.php"
 
-chmod 400 "$final_path/$app/sites/default/settings.php"
-chown $app:$app "$final_path/$app/sites/default/settings.php"
+#chmod 400 "$final_path/$app/sites/default/settings.php"
+#chown $app:$app "$final_path/$app/sites/default/settings.php"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -182,9 +182,9 @@ ynh_script_progression --message="Configuring permissions..."
 # Make app public if necessary
 if [ $is_public -eq 1 ]
 then
-	# Everyone can access the app.
-	# The "main" permission is automatically created before the install script.
-	ynh_permission_update --permission="main" --add="visitors"
+    # Everyone can access the app.
+    # The "main" permission is automatically created before the install script.
+    ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================

@@ -7,7 +7,6 @@
 #=================================================
 
 source _common.sh
-source ynh_add_swap
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -64,14 +63,6 @@ ynh_script_progression --message="Removing PHP-FPM configuration..."
 # Remove the dedicated PHP-FPM config
 ynh_remove_fpm_config
 
-#=================================================
-# SPECIFIC REMOVE
-#=================================================
-# REMOVE SWAP
-#=================================================
-ynh_script_progression --message="Removing swap..."
-
-ynh_del_swap
 
 #=================================================
 # REMOVE THE CRON FILE
