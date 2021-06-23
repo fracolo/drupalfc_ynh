@@ -7,7 +7,6 @@
 # dependencies used by the app
 pkg_dependencies="curl"
 
-swap_needed=512
 
 YNH_PHP_VERSION="7.3"
 
